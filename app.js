@@ -29,7 +29,8 @@ const userSchema = new mongoose.Schema({
 const Users = new mongoose.model('User',userSchema);
 
 const write = async(obj) =>{
-    let hashPassword = await bcrypt.hash(obj.password, 10);
+    // let hashPassword = await bcrypt.hash(obj.password, 10);
+    let hashPassword = obj.password;
     const val = new Users({
         username:obj.username,
         password:hashPassword,
@@ -61,12 +62,12 @@ const check = async(obj,res) =>{
 
 const login = async(obj,res) =>{
     try{
-        let hashPassword = await bcrypt.hash(obj.password, 10);
-        console.log(hashPassword);
+        let hashPassword = obj.password;
         console.log(obj.username);
-        const result = await Users.find({username:obj.username});
+        console.log(obj.password);
+        const result = await Users.findOne({username:obj.username,password:hashPassword});
         console.log(result);
-        if(result!=null){
+        if(result!==null){
             res.sendFile(path.join(__dirname,'./home.html'));
         }
         else{
