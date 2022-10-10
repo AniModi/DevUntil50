@@ -104,7 +104,7 @@ li{
 
 #login-div{
     margin: auto;
-    width: 30vw;
+    width: 300px;
     z-index: 10;
     background-color:rgb(255, 255, 255,0.69);
 }
@@ -145,6 +145,7 @@ footer{
     justify-content: start;
     align-items: center;
     bottom: 0;
+    flex-wrap: wrap;
 }
 
 footer>*{
@@ -153,6 +154,7 @@ footer>*{
 
 #footer-list{
     margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 #footer-list li{
